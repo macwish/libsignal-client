@@ -67,13 +67,18 @@ Pod::Spec.new do |s|
     }
   ]
 
+#   s.prepare_command = %q(
+#     set -euo pipefail
+#     CARGO_BUILD_TARGET=aarch64-apple-ios swift/build_ffi.sh --release
+#     CARGO_BUILD_TARGET=x86_64-apple-ios swift/build_ffi.sh --release
+#     CARGO_BUILD_TARGET=aarch64-apple-ios-sim swift/build_ffi.sh --release --use-xargo
+#     CARGO_BUILD_TARGET=x86_64-apple-ios-macabi swift/build_ffi.sh --release --use-xargo
+#     CARGO_BUILD_TARGET=aarch64-apple-ios-macabi swift/build_ffi.sh --release --use-xargo
+#   )
+  
   s.prepare_command = %q(
     set -euo pipefail
     CARGO_BUILD_TARGET=aarch64-apple-ios swift/build_ffi.sh --release
-    # CARGO_BUILD_TARGET=x86_64-apple-ios swift/build_ffi.sh --release
-    # CARGO_BUILD_TARGET=aarch64-apple-ios-sim swift/build_ffi.sh --release --use-xargo
-    # CARGO_BUILD_TARGET=x86_64-apple-ios-macabi swift/build_ffi.sh --release --use-xargo
-    # CARGO_BUILD_TARGET=aarch64-apple-ios-macabi swift/build_ffi.sh --release --use-xargo
   )
 
   s.test_spec 'Tests' do |test_spec|
